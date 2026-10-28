@@ -1,0 +1,342 @@
+
+/* General page styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Main calculator card */
+.container {
+    width: 100%;
+    max-width: 430px;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #333366;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.subtitle,
+.container > p {
+    text-align: center;
+    color: #777777;
+    margin-bottom: 28px;
+    line-height: 1.5;
+}
+
+/* Input labels */
+label {
+    display: block;
+    color: #333333;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Height and weight input fields */
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 22px;
+    border: 1px solid #d5d5e5;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #667eea;
+}
+
+/* Calculate button */
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* BMI result area */
+#result {
+    margin-top: 22px;
+    text-align: center;
+    color: #333366;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.7;
+}
+
+/* Mobile screen adjustments */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+}
+
+/* BMI History section */
+.history-section {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid #e5e5ef;
+}
+
+.history-section h2 {
+    color: #333366;
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.history-subtitle {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    padding: 13px;
+    margin-bottom: 10px;
+    background: #f8f9ff;
+    border: 1px solid #e4e7f5;
+    border-radius: 10px;
+}
+
+.history-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #444;
+}
+
+.history-details strong {
+    color: #333366;
+    font-size: 17px;
+}
+
+.history-details span {
+    font-size: 14px;
+}
+
+.history-details small {
+    color: #777;
+    font-size: 12px;
+}
+
+.empty-history {
+    color: #777;
+    font-size: 14px;
+    margin: 12px 0;
+}
+
+button.clear-button {
+    margin-top: 10px;
+    background: #fff;
+    color: #d64545;
+    border: 1px solid #d64545;
+}
+
+button.clear-button:hover {
+    background: #fff1f1;
+    opacity: 1;
+}
+
+/* Unit selector */
+select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 22px;
+    border: 1px solid #d5d5e5;
+    border-radius: 10px;
+    background: white;
+    font-size: 16px;
+    color: #333;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* Visual BMI gauge */
+.bmi-gauge {
+    margin-top: 20px;
+    padding: 12px 0;
+}
+
+.gauge-track {
+    position: relative;
+    display: flex;
+    height: 13px;
+    border-radius: 20px;
+    background: linear-gradient(
+        to right,
+        #3498db 0%,
+        #3498db 18.5%,
+        #27ae60 18.5%,
+        #27ae60 50%,
+        #f39c12 50%,
+        #f39c12 66.7%,
+        #e74c3c 66.7%,
+        #e74c3c 100%
+    );
+}
+
+.gauge-marker {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 17px;
+    height: 17px;
+    border: 3px solid white;
+    border-radius: 50%;
+    background: #222;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
+    transform: translate(-50%, -50%);
+    transition: left 0.4s ease;
+}
+
+.gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.gauge-labels span {
+    font-size: 10px;
+    color: #666;
+    text-align: center;
+}
+
+@media (max-width: 380px) {
+    .gauge-labels span {
+        font-size: 8px;
+    }
+}
+
+/* Final UI polish */
+.container {
+    animation: fadeIn 0.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+h1 {
+    letter-spacing: -0.5px;
+}
+
+input:hover,
+select:hover {
+    border-color: #a5a9e8;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+    outline: 3px solid rgba(102, 126, 234, 0.35);
+    outline-offset: 3px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#result h2 {
+    margin-bottom: 10px;
+}
+
+#result p {
+    margin-top: 8px;
+}
+
+.history-item {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.history-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(50, 50, 100, 0.08);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet and mobile screens */
+@media (max-width: 600px) {
+    body {
+        padding: 14px;
+        align-items: flex-start;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 24px 18px;
+        margin: 12px auto;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    button {
+        min-height: 48px;
+    }
+
+    input,
+    select {
+        min-height: 46px;
+    }
+
+    .history-section h2 {
+        font-size: 20px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
